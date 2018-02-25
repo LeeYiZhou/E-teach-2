@@ -15,6 +15,7 @@ public class ActivityCollector {
 
     public static MyInfo myInfo=new MyInfo();
     public static String BmobApplicationId="655f4287cdd20115bf4d20cafb488dac";
+    public static String QQID = "1106519470";
     public static int flag1;//标志1
     public static int flag2;//标志2
 

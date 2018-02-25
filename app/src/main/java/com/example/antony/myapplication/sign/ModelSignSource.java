@@ -139,7 +139,31 @@ public class ModelSignSource implements ModelSign {
     }
 
     @Override
-    public void queryByQQIdModel(Context context,String id,PresenterSign presenterSign) {//根据QQ查询账户
+    public void queryQQIdModel(Context context, String id, final PresenterSign presenterSign) {//根据QQ查询账户
+
+        Bmob.initialize(context, ActivityCollector.BmobApplicationId);//初始化
+        BmobQuery<MyInfo> query = new BmobQuery<MyInfo>();
+        query.addWhereEqualTo("qqId",id);
+        query.findObjects(context, new FindListener<MyInfo>() {
+            @Override
+            public void onSuccess(List<MyInfo> object) {
+                if(object.size()==0){
+                    ActivityCollector.flag2=1;
+                    presenterSign.onFailure();
+                }
+                else{
+                    ActivityCollector.myInfo=object.get(0);
+                    presenterSign.onSuccess();
+                }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+                ActivityCollector.flag2=0;
+                presenterSign.onFailure();
+            }
+        });
+
     }
 
     @Override

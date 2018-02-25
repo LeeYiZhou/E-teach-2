@@ -5,4 +5,5 @@ package com.example.antony.myapplication.homepage;
  */
 
 public interface BindView {
+    void showToastView(String str);
 }
