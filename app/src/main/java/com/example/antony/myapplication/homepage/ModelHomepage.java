@@ -1,5 +1,7 @@
 package com.example.antony.myapplication.homepage;
 
+import android.content.Context;
+
 import com.example.antony.myapplication.data.MyInfo;
 
 /**
@@ -11,4 +13,7 @@ public interface ModelHomepage {
     void cutPhotoModel();//裁剪图片
     void uploadPhotoModel();//上传图片
     void updateMyInfoModel(MyInfo myInfo);//更新个人信息设置
+    void queryQQIdModel(Context context,String id,PresenterHomepage presenterHomepage);//查询QQId
+    void bindQQIdModel(Context context,String id,PresenterHomepage presenterHomepage);//绑定QQId
+    //void updateQQId();
 }

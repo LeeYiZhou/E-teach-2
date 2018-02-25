@@ -16,7 +16,7 @@ import com.example.antony.myapplication.R;
 
 import cn.bmob.v3.Bmob;
 
-public class SignInActivity extends BaseActivity implements SignInView {
+public class SignInActivity extends BaseActivity implements SignInView,View.OnClickListener{
 
     //各个控件对象，例如：private TextView accountName
     private EditText phone;//手机号
@@ -64,6 +64,10 @@ public class SignInActivity extends BaseActivity implements SignInView {
                 startActivity(intent);
             }
         });
+        signInByQQ.setOnClickListener(this);
+        signInByWeixin.setOnClickListener(this);
+        signInByWeibo.setOnClickListener(this);
+        signInByFace.setOnClickListener(this);
 
     }
 
@@ -80,6 +84,24 @@ public class SignInActivity extends BaseActivity implements SignInView {
         signInPresenter=new SignInPresenter(SignInActivity.this,SignInActivity.this);
         initViews();
         initListener();
+    }
+
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.img_qq:
+                signInPresenter.signInByQQPresenter();
+                break;
+            case R.id.weixin:
+            case R.id.weibo:
+            case R.id.txt_face_recog:
+                SignInActivity.this.showToastView("正在开发，敬请期待");
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent data){
+        signInPresenter.startActivityPresenter(requestCode,resultCode,data);
     }
 
     //重写SignInView中的方法

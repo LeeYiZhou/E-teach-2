@@ -14,7 +14,7 @@ public interface ModelSign {
     void checkVerificationModel(Context context,String phone,String verification,PresenterSign presenterSign);//检查验证码是否正确
     void signUpModel(Context context,String phone,String username,String password,PresenterSign presenterSign);//手机号和密码注册
     void signInByPhoneModel(Context context,String phone,PresenterSign presenterSign);//使用手机号和密码登陆
-    void queryByQQIdModel(Context context,String id,PresenterSign presenterSign);//根据QQ查询账户
+    void queryQQIdModel(Context context,String id,PresenterSign presenterSign);//根据QQ查询账户
     void queryByWeixinIdModel(Context context,String id,PresenterSign presenterSign);//根据微信查询账户
     void queryByWeiboIdModel(Context context,String id,PresenterSign presenterSign);//根据微博查询账户
 }
