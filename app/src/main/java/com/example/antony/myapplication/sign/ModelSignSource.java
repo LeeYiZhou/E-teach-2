@@ -13,6 +13,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.VerifySMSCodeListener;
 
 /**
@@ -85,6 +86,25 @@ public class ModelSignSource implements ModelSign {
     }
 
     @Override
+    public void updatePasswordModel(Context context, String password, final PresenterSign presenterSign) {//更新密码
+        Bmob.initialize(context, ActivityCollector.BmobApplicationId);//初始化
+        final MyInfo myInfo=ActivityCollector.myInfo;
+        myInfo.setPassword(password);
+        myInfo.update(context, myInfo.getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+                ActivityCollector.myInfo=myInfo;
+                presenterSign.onSuccess();
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+                presenterSign.onFailure();
+            }
+        });
+    }
+
+    @Override
     public void queryByPhoneModel(Context context, String phone, final PresenterSign presenterSign) {//根据手机号查询账户
 
         Bmob.initialize(context, ActivityCollector.BmobApplicationId);//初始化
@@ -98,6 +118,7 @@ public class ModelSignSource implements ModelSign {
                 else
                 {
                     ActivityCollector.flag2=1;
+                    ActivityCollector.myInfo=list.get(0);
                     presenterSign.onFailure();
                 }
             }

@@ -207,5 +207,10 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/bottom_view"
+        android:layout_gravity="bottom"
+        />
 </LinearLayout>

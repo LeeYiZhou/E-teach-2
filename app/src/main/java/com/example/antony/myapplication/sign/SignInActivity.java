@@ -1,12 +1,18 @@
 package com.example.antony.myapplication.sign;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +35,11 @@ public class SignInActivity extends BaseActivity implements SignInView,View.OnCl
     private ImageView signInByWeixin;//微信登陆按钮
     private ImageView signInByWeibo;//微博登陆按钮
     private SignInPresenter signInPresenter;
+
+    //popupwindow
+    Button popFind;
+    Button popVerification;
+    PopupWindow popup;
 
     //自定义函数
     private void initViews(){//初始化各个控件
@@ -64,11 +75,64 @@ public class SignInActivity extends BaseActivity implements SignInView,View.OnCl
                 startActivity(intent);
             }
         });
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {//开启popupwindow
+            @Override
+            public void onClick(View view) {
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp.alpha = 0.7f;
+                getWindow().setAttributes(lp); //设置背景变暗
+                popup.showAtLocation(findViewById(R.id.bottom_view), Gravity.BOTTOM, 0, 0);
+            }
+        });
         signInByQQ.setOnClickListener(this);
         signInByWeixin.setOnClickListener(this);
         signInByWeibo.setOnClickListener(this);
         signInByFace.setOnClickListener(this);
 
+    }
+
+    private void initPop(){//初始化popupwindow
+        View view = LayoutInflater.from(SignInActivity.this).inflate(R.layout.popupwindow_sign_in, null);
+        popup= new PopupWindow(view.getContext());
+        popup.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        popup.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        //popupWindow.setElevation(10.0f);
+        popup.setContentView(view);
+        popup.setBackgroundDrawable(new ColorDrawable(0x00000000));
+        popup.setOutsideTouchable(false);
+        popup.setFocusable(true);
+        popup.setAnimationStyle(R.style.popup_anim);
+
+        popup.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp.alpha = 1f;
+                getWindow().setAttributes(lp);
+            }
+        });
+
+        popFind= (Button) view.findViewById(R.id.find);
+        popFind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignInActivity.this, ForgetOneActivity.class);
+                intent.putExtra("type","find");
+                startActivity(intent);
+            }
+        });
+
+        popVerification = (Button) view.findViewById(R.id.verification);
+        popVerification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignInActivity.this, ForgetOneActivity.class);
+                intent.putExtra("type","verification");
+                startActivity(intent);
+            }
+        });
     }
 
     private void initOthers(){//其他初始化操作，例如pickerView、popupWindow
@@ -84,6 +148,7 @@ public class SignInActivity extends BaseActivity implements SignInView,View.OnCl
         signInPresenter=new SignInPresenter(SignInActivity.this,SignInActivity.this);
         initViews();
         initListener();
+        initPop();
     }
 
     @Override

@@ -8,6 +8,7 @@ import cn.bmob.v3.BmobObject;
 
 public class MyInfo extends BmobObject {
 
+    private String icon;
     private String phone;
     private String nickName;
     private String password;
@@ -15,6 +16,59 @@ public class MyInfo extends BmobObject {
     private String weixinId;
     private String weiboId;
     private String school;
+    private String sex;
+    private String birthday;
+    private String location;
+    private String mail;
+    private String signature;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
 
     public String getSchool() {
         return school;

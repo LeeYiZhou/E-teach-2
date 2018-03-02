@@ -7,12 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="手机验证码登陆"
-        android:id="@+id/phone_login"/>
+        android:id="@+id/verification"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="找回密码"
-        android:id="@+id/face_recog_login"/>
+        android:id="@+id/find"/>
 
 </LinearLayout>

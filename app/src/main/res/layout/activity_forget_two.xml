@@ -28,6 +28,7 @@
         android:layout_marginTop="15dp">
 
         <TextView
+            android:id="@+id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="15928779089"
@@ -35,24 +36,17 @@
             android:textSize="13sp"/>
 
         <TextView
+            android:id="@+id/verification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="60"
+            android:layout_marginLeft="20dp"
+            android:text="60秒"
             android:textSize="13sp"
             android:textColor="@color/gray"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13sp"
-            android:textColor="@color/gray"
-            android:text="秒后重新发送"/>
-
-
     </LinearLayout>
 
     <com.example.antony.myapplication.util.SecurityCodeView
+        android:id="@+id/input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 

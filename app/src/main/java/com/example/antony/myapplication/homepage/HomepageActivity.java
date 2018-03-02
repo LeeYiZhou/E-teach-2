@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,11 +12,13 @@ import com.example.antony.myapplication.ActivityCollector;
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.data.MyInfo;
+import com.example.antony.myapplication.path.LocalCaseActivity;
 import com.example.antony.myapplication.sign.MainActivity;
 
 public class HomepageActivity extends BaseActivity implements HomepageView{
 
     //各个控件对象，例如：private TextView accountName
+    private ImageView imageView;
     private TextView username;
     private TextView school;
     private LinearLayout setting;
@@ -23,6 +26,7 @@ public class HomepageActivity extends BaseActivity implements HomepageView{
 
     //自定义函数
     private void initViews(){//初始化各个控件
+        imageView=(ImageView)findViewById(R.id.imageview);
         username=(TextView)findViewById(R.id.username);
         school=(TextView)findViewById(R.id.school);
         setting=(LinearLayout)findViewById(R.id.setting);
@@ -30,10 +34,27 @@ public class HomepageActivity extends BaseActivity implements HomepageView{
     }
 
     private void initListener(){//初始化各个事件
+        imageView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent=new Intent(HomepageActivity.this,PersonInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(HomepageActivity.this,SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        caseUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomepageActivity.this,LocalCaseActivity.class);
+                intent.putExtra("type","HomepageActivity");
                 startActivity(intent);
             }
         });

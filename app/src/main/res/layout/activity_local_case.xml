@@ -45,6 +45,7 @@
         android:background="@color/light_red">
 
         <RelativeLayout
+            android:id="@+id/camera"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -55,13 +56,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:text="编辑图片"
+                android:text="相机导入"
                 android:textSize="19sp"
                 android:textColor="@color/background_color" />
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/album"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
@@ -72,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:text="导入图片"
+                android:text="相册导入"
                 android:textSize="19sp"
                 android:textColor="@color/background_color" />
 
@@ -124,6 +126,7 @@
                 android:layout_alignParentBottom="true"/>
 
             <ImageView
+                android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/top_side"
@@ -135,6 +138,7 @@
         </RelativeLayout>
 
         <ImageView
+            android:id="@+id/upload"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@mipmap/ic_plus"
@@ -143,5 +147,11 @@
             android:layout_marginTop="20dp" />
 
     </RelativeLayout>
+
+    <com.mingle.widget.LoadingView
+        android:id="@+id/loadView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
 
 </RelativeLayout>

@@ -3,12 +3,14 @@ package com.example.antony.myapplication.sign;
 import android.content.Context;
 
 import com.example.antony.myapplication.data.MyInfo;
+import com.example.antony.myapplication.homepage.PresenterHomepage;
 
 /**
  * Created by antony on 2018/2/20.
  */
 
 public interface ModelSign {
+    void updatePasswordModel(Context context, String password, PresenterSign presenterSign);//更新密码
     void sendVerificationModel(Context context, String phone,PresenterSign presenterSign);//发送验证码
     void queryByPhoneModel(Context context,String phone,PresenterSign presenterSign);//根据手机号查询账户
     void checkVerificationModel(Context context,String phone,String verification,PresenterSign presenterSign);//检查验证码是否正确

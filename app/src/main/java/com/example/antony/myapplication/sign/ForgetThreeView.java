@@ -5,4 +5,7 @@ package com.example.antony.myapplication.sign;
  */
 
 public interface ForgetThreeView {
+    void showToastView(String str);
+    String showPasswordView();//获取密码
+    void startActivityView();//开启活动
 }
