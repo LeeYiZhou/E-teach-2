@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="@color/light_gray">
+    android:layout_height="150dp"
+    android:background="@mipmap/bg_colorful"
+    android:gravity="center">
 
     <Button
-        android:id="@+id/album"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="选择本地照片" />
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:textColor="@color/background_color"
+        android:background="@drawable/bg_red_rounded_rectangle_1"
+        android:text="选择本地照片"
+        android:id="@+id/set_head_by_photo"/>
 
     <Button
-        android:id="@+id/photo"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="拍照" />
+        android:layout_width="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="35dp"
+        android:textColor="@color/background_color"
+        android:background="@drawable/bg_red_rounded_rectangle_1"
+        android:text="拍 照"
+        android:id="@+id/set_head_by_camera"
+        android:layout_toRightOf="@id/set_head_by_photo"/>
 
-</LinearLayout>
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/set_head_by_camera"
+        android:background="@drawable/bg_white_rounded_rectangle_2"
+        android:layout_marginTop="15dp"
+        android:text="取 消"
+        android:textColor="@color/light_red"/>
+
+</RelativeLayout>

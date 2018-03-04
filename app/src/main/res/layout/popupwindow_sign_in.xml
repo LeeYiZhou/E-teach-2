@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="150dp"
+    android:background="@mipmap/bg_colorful"
+    android:gravity="center">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="手机验证码登陆"
-        android:id="@+id/verification"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:textColor="@color/background_color"
+        android:background="@drawable/bg_red_rounded_rectangle_1"
         android:text="找回密码"
-        android:id="@+id/find"/>
+        android:id="@+id/face_recog_login"/>
 
-</LinearLayout>
+    <Button
+        android:layout_width="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="35dp"
+        android:textColor="@color/background_color"
+        android:background="@drawable/bg_red_rounded_rectangle_1"
+        android:text="短信验证登录"
+        android:id="@+id/phone_login"
+        android:layout_toRightOf="@id/face_recog_login"/>
+
+    <Button
+        android:layout_width="320dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/face_recog_login"
+        android:background="@drawable/bg_white_rounded_rectangle_2"
+        android:layout_marginTop="15dp"
+        android:text="取 消"
+        android:textColor="@color/light_red"/>
+
+</RelativeLayout>
