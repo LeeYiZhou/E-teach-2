@@ -1,47 +1,71 @@
-package com.example.antony.myapplication.train;
+package com.example.antony.myapplication.path;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import com.example.antony.myapplication.ActivityCollector;
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
-import com.example.antony.myapplication.bean.Point;
 import com.example.antony.myapplication.bean.PointSimple;
 import com.example.antony.myapplication.data.Image;
+import com.example.antony.myapplication.train.OutcomeDisplayTrainActivity;
 import com.example.antony.myapplication.util.ImageLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class OutcomeDisplayTrainActivity extends BaseActivity {
+public class OutcomeDisplayPathActivity extends BaseActivity implements OutcomeDisplayPathView {
 
-    /*控件对象*/
+    /*各个控件对象，例如：private TextView accountName*/
     private ImageLayout imageLayout;
+    private RelativeLayout share;
+    private RelativeLayout feedback;
 
-    /*数据对象*/
+    /*初始化*/
+    private int windowWidth,windowHeight;
     private Image image;
-    private int windowWidth;
-    private int windowHeight;
-    private List<Point> pointList;
+    private Intent intent;
+    private String type;
 
 
     /*初始化*/
-
     /**
-     * 初始化控价
+     *初始化各个控件
      */
-    private void initView(){
-        imageLayout=(ImageLayout)findViewById(R.id.img_result);
+    private void initViews(){
+        imageLayout=(ImageLayout)findViewById(R.id.image_layoutout);
+        share=(RelativeLayout)findViewById(R.id.share);
+        feedback=(RelativeLayout)findViewById(R.id.feedback);
     }
 
+    /**
+     *初始化各个事件
+     */
+    private void initListener(){
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "\n----来源于E-teach");
+                sendIntent.setType("text/plain");
+                startActivity(Intent.createChooser(sendIntent,"Share"));
+            }
+        });
+        feedback.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Toast.makeText(OutcomeDisplayPathActivity.this,"功能正在开发，敬请期待",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /**
+     *其他初始化操作
+     */
     private void initOthers(){
-        pointList=ActivityCollector.pointList;
-        Intent intent=getIntent();
         image=(Image)intent.getSerializableExtra("image");
         ArrayList<PointSimple> arrayList=new ArrayList<>();
         PointSimple pointSimple=new PointSimple();
@@ -81,9 +105,6 @@ public class OutcomeDisplayTrainActivity extends BaseActivity {
         catch (Exception e){
             e.printStackTrace();
         }
-        for(Point point:pointList){
-            imageLayout.addPoint(point.width,point.height);
-        }
     }
     /*初始化*/
 
@@ -92,11 +113,21 @@ public class OutcomeDisplayTrainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_outcome_display_train);
-        initView();
-        initOthers();
+        setContentView(R.layout.activity_outcome_display_path);
+        initViews();
+        initListener();
+        intent=getIntent();
+        type=intent.getStringExtra("type");
+        if(type.equals("online")){
+            initOthers();
+        }
+
     }
-    /*重写BaseActivity中的方法*/
+
+
+    /*重写OutcomeDisplayView中的方法*/
+
+     /*重写OutcomeDisplayView中的方法*/
 
 
      /*其他方法*/
@@ -106,17 +137,16 @@ public class OutcomeDisplayTrainActivity extends BaseActivity {
      * @param str Image对象中点的坐标
      * @return 所对应的PointSimple
      */
-    PointSimple parseString(String str){
-        PointSimple pointSimple=new PointSimple();
-        try{
-            String[] args=str.split("\\*");
-            pointSimple.width_scale=Double.parseDouble(args[0]);
-            pointSimple.height_scale=Double.parseDouble(args[1]);
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-        return pointSimple;
-    }
-
+     PointSimple parseString(String str){
+         PointSimple pointSimple=new PointSimple();
+         try{
+             String[] args=str.split("\\*");
+             pointSimple.width_scale=Double.parseDouble(args[0]);
+             pointSimple.height_scale=Double.parseDouble(args[1]);
+         } catch (Exception e){
+             e.printStackTrace();
+             return null;
+         }
+         return pointSimple;
+     }
 }

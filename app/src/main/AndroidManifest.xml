@@ -90,11 +90,12 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--相册、拍照必用-->
         <provider
             android:authorities="com.example.antony.myapplication.fileprovider"
             android:name="android.support.v4.content.FileProvider"
@@ -119,7 +120,7 @@
         <activity android:name=".homepage.SettingsActivity" />
         <activity android:name=".homepage.PersonInfoActivity" />
         <activity android:name=".path.OnlineCaseActivity" />
-        <activity android:name=".path.OutcomeDisplayPathPathActivity" />
+        <activity android:name=".path.OutcomeDisplayPathActivity" />
         <activity android:name=".train.EditCaseActivity" />
         <activity android:name=".train.OutcomeDisplayTrainActivity" />
         <activity android:name=".predict.OutcomeDisplayPredictActivity" />
@@ -127,7 +128,6 @@
         <activity android:name=".sign.ForgetTwoActivity" />
         <activity android:name=".sign.ForgetThreeActivity" />
         <activity android:name=".homepage.BindActivity" />
-        <activity android:name=".homepage.ReviseActivity"></activity>
         <!-- QQ登录配置 start -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"

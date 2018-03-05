@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.example.antony.myapplication.util.UltimateBar;
+
 import cn.bmob.v3.Bmob;
 
 /**
@@ -15,6 +17,8 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        UltimateBar ultimateBar=new UltimateBar(this);
+        ultimateBar.setImmersionBar();
         Log.d("BaseActivity",getClass().getSimpleName());
         ActivityCollector.addActivity(this);
     }

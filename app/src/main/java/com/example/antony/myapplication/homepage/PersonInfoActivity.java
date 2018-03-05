@@ -47,9 +47,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PersonInfoActivity extends BaseActivity implements PersonInfoView,View.OnClickListener{
 
-    PersonInfoPresenter personInfoPresenter;
-
-    //各个控件对象，例如：private TextView accountName
+    //初始化各个对象，例如：private TextView accountName
     private CircleImageView icon;
     private TextView signature;
     private RelativeLayout caseDB;
@@ -61,6 +59,7 @@ public class PersonInfoActivity extends BaseActivity implements PersonInfoView,V
     private EditText signatureEdit;
     private Button save;
     private LoadingView loadingView;
+    private PersonInfoPresenter personInfoPresenter;
 
     //个人信息中性别设置所需
     private List<String> sexList = new ArrayList<>();
@@ -88,6 +87,7 @@ public class PersonInfoActivity extends BaseActivity implements PersonInfoView,V
     PopupWindow popupIcon;
     private Button album;
     private Button photo;
+    private Button cancel;
 
     /*拍照 相册上传图片*/
     private static final int CODE_GALLERY_REQUEST = 0xa0;
@@ -284,6 +284,9 @@ public class PersonInfoActivity extends BaseActivity implements PersonInfoView,V
 
         photo = (Button) view.findViewById(R.id.photo);
         photo.setOnClickListener(this);
+
+        cancel=(Button)view.findViewById(R.id.cancel);
+        cancel.setOnClickListener(this);
     }
 
     private void initPopupwindow(){//初始化popupwindow
@@ -385,6 +388,9 @@ public class PersonInfoActivity extends BaseActivity implements PersonInfoView,V
                 }
                 else
                     openCamera();
+                break;
+            case R.id.cancel:
+                popupIcon.dismiss();
                 break;
             case R.id.caseDB:
             case R.id.course:

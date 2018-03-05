@@ -24,7 +24,7 @@ public class HomepageActivity extends BaseActivity implements HomepageView{
     private LinearLayout setting;
     private LinearLayout caseUpload;
 
-    //自定义函数
+    //初始化函数
     private void initViews(){//初始化各个控件
         imageView=(ImageView)findViewById(R.id.imageview);
         username=(TextView)findViewById(R.id.username);
@@ -68,6 +68,7 @@ public class HomepageActivity extends BaseActivity implements HomepageView{
         else
             school.setText(myInfo.getSchool().toString());
     }
+    //初始化函数
 
     //重写BaseActivity中的方法
     @Override

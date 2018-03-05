@@ -8,7 +8,6 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
@@ -17,7 +16,6 @@ import org.json.JSONObject;
 
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URI;
 
@@ -37,13 +35,11 @@ public class CustomVIsionAPI {
 
         try
         {
-            URIBuilder builder = new URIBuilder(
+            URI uri = new URI(
                     "https://southcentralus.api.cognitive.microsoft.com/" +
                             "customvision/v1.1/Prediction/" +
                             "ed452434-110d-4c4d-9c84-51bad8820b04/" +
                             "image?iterationId=9f31ee2f-46b9-450a-b95d-419f4abb669c");
-
-            URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
             request.setHeader("Content-Type", "application/octet-stream");
             request.setHeader("Prediction_Key", "b0df046c5d744954b4cb2690b3157fe9");

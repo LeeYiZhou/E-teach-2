@@ -39,6 +39,7 @@ public class SignInActivity extends BaseActivity implements SignInView,View.OnCl
     //popupwindow
     Button popFind;
     Button popVerification;
+    Button popCancel;
     PopupWindow popup;
 
     //自定义函数
@@ -131,6 +132,14 @@ public class SignInActivity extends BaseActivity implements SignInView,View.OnCl
                 Intent intent = new Intent(SignInActivity.this, ForgetOneActivity.class);
                 intent.putExtra("type","verification");
                 startActivity(intent);
+            }
+        });
+
+        popCancel=(Button)view.findViewById(R.id.cancel);
+        popCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popup.dismiss();
             }
         });
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.antony.myapplication.path.OutcomeDisplayPathPathActivity">
+    tools:context="com.example.antony.myapplication.path.LocalCaseActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -125,7 +125,7 @@
                 android:background="@color/light_red"
                 android:layout_alignParentBottom="true"/>
 
-            <ImageView
+            <com.example.antony.myapplication.util.ScaleView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -152,6 +152,6 @@
         android:id="@+id/loadView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
 </RelativeLayout>
