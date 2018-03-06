@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.antony.myapplication.BaseActivity;
@@ -19,7 +20,7 @@ import com.example.antony.myapplication.util.UltimateBar;
 public class OutcomeDisplayPredictActivity extends BaseActivity {
 
     /*控件对象*/
-    private RoundImageView roundImageView;
+    private ImageView imageView;
 
     /*数据对象*/
     private Intent intent;
@@ -34,7 +35,7 @@ public class OutcomeDisplayPredictActivity extends BaseActivity {
      */
     private void initView(){
 
-        roundImageView=(RoundImageView)findViewById(R.id.image);
+        imageView=(ImageView)findViewById(R.id.image);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,7 +57,7 @@ public class OutcomeDisplayPredictActivity extends BaseActivity {
         type=intent.getStringExtra("type");
         if(type.equals("online")){
             image=(Image)intent.getSerializableExtra("image");
-            Glide.with(this).load(image.getUrl()).into(roundImageView);
+            Glide.with(this).load(image.getUrl()).into(imageView);
         }
 
     }
