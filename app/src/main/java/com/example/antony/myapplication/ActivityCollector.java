@@ -16,6 +16,7 @@ import java.util.List;
 
 public class ActivityCollector {
 
+    public static boolean flag=true;
     public static MyInfo myInfo=new MyInfo();
     public static List<Image> imageList=new ArrayList<>();
     public static List<Point> pointList=new ArrayList<>();

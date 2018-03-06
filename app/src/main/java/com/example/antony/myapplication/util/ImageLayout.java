@@ -131,7 +131,7 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
             double height_scale = points.get(i).height_scale;
 
 
-            LinearLayout view = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.layout_img_point, this, false);
+            LinearLayout view = (LinearLayout) LayoutInflater.from(mContext).inflate(R.layout.layout_img_red_point, this, false);
             final ImageView imageView = (ImageView) view.findViewById(R.id.imgPoint);
             imageView.setTag(i);
 

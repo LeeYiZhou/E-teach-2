@@ -1,6 +1,7 @@
 package com.example.antony.myapplication.path;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.example.antony.myapplication.bean.PointSimple;
 import com.example.antony.myapplication.data.Image;
 import com.example.antony.myapplication.train.OutcomeDisplayTrainActivity;
 import com.example.antony.myapplication.util.ImageLayout;
+import com.example.antony.myapplication.util.ViewToBitmap;
 
 import java.util.ArrayList;
 
@@ -47,11 +49,17 @@ public class OutcomeDisplayPathActivity extends BaseActivity implements OutcomeD
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent sendIntent = new Intent();
+                /*Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "\n----来源于E-teach");
                 sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent,"Share"));
+                startActivity(Intent.createChooser(sendIntent,"Share"));*/
+                String path=ViewToBitmap.saveBitmap(imageLayout);
+                Intent imageIntent = new Intent(Intent.ACTION_SEND);
+                imageIntent.setType("image/jpeg");
+                imageIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(path));
+                startActivity(Intent.createChooser(imageIntent, "分享"));
+
             }
         });
         feedback.setOnClickListener(new View.OnClickListener(){

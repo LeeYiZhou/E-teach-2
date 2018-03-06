@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.antony.myapplication.ActivityCollector;
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.homepage.HomepageActivity;
@@ -25,6 +26,7 @@ import com.example.antony.myapplication.predict.OutcomeDisplayPredictActivity;
 import com.example.antony.myapplication.train.EditCaseActivity;
 import com.example.antony.myapplication.train.OutcomeDisplayTrainActivity;
 import com.example.antony.myapplication.util.CustomVIsionAPI;
+import com.example.antony.myapplication.util.FaceAPI;
 import com.example.antony.myapplication.util.PhotoUtils;
 import com.example.antony.myapplication.util.ScaleView;
 import com.mingle.widget.LoadingView;
@@ -108,8 +110,21 @@ public class LocalCaseActivity extends BaseActivity implements LocalCaseView{
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean flag=CustomVIsionAPI.isImagePatient(bitmap);
-                if(flag){
+                ActivityCollector.flag=true;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ActivityCollector.flag=CustomVIsionAPI.isImagePatient(bitmap);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                LocalCaseActivity.this.showToastView("test"+ActivityCollector.flag);
+                            }
+                        });
+                    }
+                }).start();
+
+                /*if(flag){
                     if(type.equals("path")){
                         Intent intent=new Intent(LocalCaseActivity.this,OutcomeDisplayPathActivity.class);
                         intent.putExtra("type","local");
@@ -133,7 +148,9 @@ public class LocalCaseActivity extends BaseActivity implements LocalCaseView{
                 else {
                     LocalCaseActivity.this.showToastView("输入的图片不是唇腭裂患者");
                 }
-
+                bitmap=FaceAPI.detectAndCrop(bitmap);
+                scaleView.setImageBitmap(bitmap);
+                LocalCaseActivity.this.showToastView("cheng");*/
             }
         });
 
