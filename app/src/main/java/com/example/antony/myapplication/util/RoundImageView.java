@@ -35,7 +35,7 @@ public class RoundImageView extends AppCompatImageView {
         int w = this.getWidth();
         int h = this.getHeight();
         clipPath.addRoundRect(new RectF(0, 0, w, h),
-                10.0f, 10.0f, Path.Direction.CW);
+                50.0f, 50.0f, Path.Direction.CW);
         canvas.clipPath(clipPath);
         super.onDraw(canvas);
     }

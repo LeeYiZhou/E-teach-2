@@ -28,7 +28,7 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
 
     FrameLayout layouPoints;
 
-    RoundImageView imgBg;
+    ImageView imgBg;
 
     Context mContext;
 
@@ -57,7 +57,7 @@ public class ImageLayout extends FrameLayout implements View.OnClickListener {
 
         View imgPointLayout = inflate(context, R.layout.layout_imgview_point, this);
 
-        imgBg = (RoundImageView) imgPointLayout.findViewById(R.id.imgBg);
+        imgBg = (ImageView) imgPointLayout.findViewById(R.id.imgBg);
         layouPoints = (FrameLayout) imgPointLayout.findViewById(R.id.layouPoints);
     }
 
