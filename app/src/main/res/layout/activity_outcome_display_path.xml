@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.example.antony.myapplication.path.OutcomeDisplayPathActivity">
 
     <android.support.v7.widget.Toolbar
+        app:navigationIcon="@mipmap/ic_homepage_back"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/toolbar"
@@ -33,7 +35,23 @@
                 android:gravity="center"
                 android:textSize="19sp"
                 />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_like"
+                />
+
+        </LinearLayout>
+
 
     </android.support.v7.widget.Toolbar>
 

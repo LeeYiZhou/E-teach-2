@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.example.antony.myapplication.path.LocalCaseActivity">
 
     <android.support.v7.widget.Toolbar
+        app:navigationIcon="@mipmap/ic_homepage_back"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/toolbar"

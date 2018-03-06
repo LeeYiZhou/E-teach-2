@@ -19,6 +19,7 @@ import com.example.antony.myapplication.bean.Point;
 import com.example.antony.myapplication.bean.PointSimple;
 import com.example.antony.myapplication.data.Image;
 import com.example.antony.myapplication.util.ImageLayout;
+import com.example.antony.myapplication.util.UltimateBar;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -130,6 +131,8 @@ public class EditCaseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_case);
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(getResources().getColor(R.color.light_red));
         initViews();
         intent=getIntent();
         type=intent.getStringExtra("type");

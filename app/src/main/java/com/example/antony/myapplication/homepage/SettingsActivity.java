@@ -3,13 +3,18 @@ package com.example.antony.myapplication.homepage;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.antony.myapplication.ActivityCollector;
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
+import com.example.antony.myapplication.sign.MainActivity;
 import com.example.antony.myapplication.sign.SignInActivity;
+
+import java.util.function.ToLongBiFunction;
 
 public class SettingsActivity extends BaseActivity implements View.OnClickListener{
 
@@ -23,6 +28,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         personInfo=(LinearLayout)findViewById(R.id.person_info);
         bind=(LinearLayout)findViewById(R.id.bind);
         logout=(LinearLayout)findViewById(R.id.logout);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initListener(){//初始化各个事件
@@ -64,5 +74,16 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
             default:
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+                break;
+        }
+        return true;
+
     }
 }

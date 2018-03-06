@@ -6,40 +6,41 @@
     android:layout_height="match_parent"
     android:paddingLeft="60dp"
     android:paddingRight="60dp"
-    android:paddingTop="100dp"
+    android:paddingTop="90dp"
     tools:context="com.example.antony.myapplication.sign.SignInActivity"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_hi"/>
+        android:layout_width="75dp"
+        android:layout_height="64dp"
+        android:src="@mipmap/ic_hi"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="E - T e a c h"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:text="医 途 唇 腭 裂 手 术 系 统"
         android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="35dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/bg_gray_rounded_rectangle"
         android:padding="3dp"
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@mipmap/ic_phone"/>
 
         <EditText
@@ -48,8 +49,8 @@
             android:layout_height="wrap_content"
             android:hint="输入手机号码"
             android:background="@color/transparent"
-            android:textSize="15sp"
-            android:layout_marginLeft="5dp"
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp"
             android:inputType="phone"
             android:textColor="@color/background_color"
             android:textColorHint="@color/background_color"/>
@@ -58,15 +59,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/bg_gray_rounded_rectangle"
         android:padding="3dp"
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@mipmap/ic_lock"/>
 
         <EditText
@@ -75,8 +76,8 @@
             android:layout_height="wrap_content"
             android:hint="输入登录密码"
             android:background="@color/transparent"
-            android:textSize="15sp"
-            android:layout_marginLeft="5dp"
+            android:textSize="17sp"
+            android:layout_marginLeft="15dp"
             android:inputType="textPassword"
             android:textColor="@color/background_color"
             android:textColorHint="@color/background_color"/>
@@ -95,7 +96,7 @@
             android:layout_height="wrap_content"
             android:text="忘记密码"
             android:textColor="@color/gray"
-            android:textSize="11sp"/>
+            android:textSize="13sp"/>
 
 
         <LinearLayout
@@ -118,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:text="人脸识别"
                 android:textColor="@color/gray"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 />
 
         </LinearLayout>
@@ -130,7 +131,7 @@
             android:text="新用户注册"
             android:layout_alignParentRight="true"
             android:textColor="@color/gray"
-            android:textSize="11sp"/>
+            android:textSize="13sp"/>
 
 
     </RelativeLayout>
@@ -140,7 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/bg_red_rounded_rectangle"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="35dp"
         android:text="登 录"
         android:textSize="17sp"
         android:textColor="@color/background_color"/>
@@ -152,27 +153,27 @@
 
         <ImageView
             android:id="@+id/img_qq"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@mipmap/ic_qq"
             android:layout_centerInParent="true"
             />
 
         <ImageView
             android:id="@+id/weibo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@mipmap/ic_weibo"
             android:layout_toLeftOf="@id/img_qq"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="25dp"/>
 
         <ImageView
             android:id="@+id/weixin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@mipmap/ic_wechat"
             android:layout_toRightOf="@id/img_qq"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="25dp"/>
 
     </RelativeLayout>
 
@@ -180,7 +181,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_marginTop="7dp">
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -200,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:text="其他方式登录"
                 android:textColor="@color/gray"
-                android:textSize="11sp"
+                android:textSize="13sp"
 
                 />
 

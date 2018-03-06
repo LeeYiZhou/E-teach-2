@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
+import android.support.v7.widget.Toolbar;
 
 import com.example.antony.myapplication.ActivityCollector;
 import com.example.antony.myapplication.BaseActivity;
@@ -13,7 +15,10 @@ import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.bean.Point;
 import com.example.antony.myapplication.bean.PointSimple;
 import com.example.antony.myapplication.data.Image;
+import com.example.antony.myapplication.path.LocalCaseActivity;
+import com.example.antony.myapplication.sign.MainActivity;
 import com.example.antony.myapplication.util.ImageLayout;
+import com.example.antony.myapplication.util.UltimateBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +41,13 @@ public class OutcomeDisplayTrainActivity extends BaseActivity {
      * 初始化控价
      */
     private void initView(){
+
         imageLayout=(ImageLayout)findViewById(R.id.img_result);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void initOthers(){
@@ -93,6 +104,8 @@ public class OutcomeDisplayTrainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outcome_display_train);
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(getResources().getColor(R.color.light_red));
         initView();
         initOthers();
     }
@@ -117,6 +130,19 @@ public class OutcomeDisplayTrainActivity extends BaseActivity {
             return null;
         }
         return pointSimple;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(OutcomeDisplayTrainActivity.this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
+                break;
+        }
+        return true;
+
     }
 
 }

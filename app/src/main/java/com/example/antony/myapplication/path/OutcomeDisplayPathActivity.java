@@ -4,16 +4,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.bean.PointSimple;
 import com.example.antony.myapplication.data.Image;
+import com.example.antony.myapplication.sign.MainActivity;
 import com.example.antony.myapplication.train.OutcomeDisplayTrainActivity;
 import com.example.antony.myapplication.util.ImageLayout;
+import com.example.antony.myapplication.util.UltimateBar;
 import com.example.antony.myapplication.util.ViewToBitmap;
 
 import java.util.ArrayList;
@@ -40,6 +44,11 @@ public class OutcomeDisplayPathActivity extends BaseActivity implements OutcomeD
         imageLayout=(ImageLayout)findViewById(R.id.image_layoutout);
         share=(RelativeLayout)findViewById(R.id.share);
         feedback=(RelativeLayout)findViewById(R.id.feedback);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     /**
@@ -122,6 +131,8 @@ public class OutcomeDisplayPathActivity extends BaseActivity implements OutcomeD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outcome_display_path);
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(getResources().getColor(R.color.light_red));
         initViews();
         initListener();
         intent=getIntent();
@@ -157,4 +168,18 @@ public class OutcomeDisplayPathActivity extends BaseActivity implements OutcomeD
          }
          return pointSimple;
      }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(OutcomeDisplayPathActivity.this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
+                break;
+        }
+        return true;
+
+    }
 }

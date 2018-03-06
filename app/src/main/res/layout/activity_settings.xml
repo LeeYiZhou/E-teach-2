@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/light_gray"
+    android:fitsSystemWindows="true"
     tools:context="com.example.antony.myapplication.homepage.PersonInfoActivity">
 
     <android.support.v7.widget.Toolbar
@@ -142,8 +143,8 @@
             android:textSize="14sp"/>
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:src="@mipmap/ic_arrow_right"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -178,8 +179,8 @@
             android:textSize="14sp"/>
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:src="@mipmap/ic_arrow_right"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"

@@ -3,13 +3,18 @@ package com.example.antony.myapplication.predict;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.data.Image;
+import com.example.antony.myapplication.path.LocalCaseActivity;
+import com.example.antony.myapplication.sign.MainActivity;
 import com.example.antony.myapplication.util.ImageLayout;
 import com.example.antony.myapplication.util.RoundImageView;
+import com.example.antony.myapplication.util.UltimateBar;
 
 public class OutcomeDisplayPredictActivity extends BaseActivity {
 
@@ -28,7 +33,13 @@ public class OutcomeDisplayPredictActivity extends BaseActivity {
      * 初始化控件
      */
     private void initView(){
-       roundImageView=(RoundImageView)findViewById(R.id.image);
+
+        roundImageView=(RoundImageView)findViewById(R.id.image);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
     /*初始化控件*/
 
@@ -38,6 +49,8 @@ public class OutcomeDisplayPredictActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outcome_display_predict);
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(getResources().getColor(R.color.light_red));
         initView();
         intent=getIntent();
         type=intent.getStringExtra("type");
@@ -48,4 +61,17 @@ public class OutcomeDisplayPredictActivity extends BaseActivity {
 
     }
      /*重写BaseActivity中的方法*/
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(OutcomeDisplayPredictActivity.this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
+                break;
+        }
+        return true;
+
+    }
 }

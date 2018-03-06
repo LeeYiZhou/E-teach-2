@@ -18,7 +18,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         UltimateBar ultimateBar=new UltimateBar(this);
-        ultimateBar.setImmersionBar();
+        ultimateBar.setColorBar(getResources().getColor(R.color.background_color));
         Log.d("BaseActivity",getClass().getSimpleName());
         ActivityCollector.addActivity(this);
     }

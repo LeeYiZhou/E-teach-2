@@ -3,6 +3,7 @@ package com.example.antony.myapplication.util;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -35,27 +36,35 @@ public class CustomVIsionAPI {
 
         try
         {
-            URI uri = new URI(
-                    "https://southcentralus.api.cognitive.microsoft.com/" +
-                            "customvision/v1.1/Prediction/" +
-                            "ed452434-110d-4c4d-9c84-51bad8820b04/" +
-                            "image?iterationId=9f31ee2f-46b9-450a-b95d-419f4abb669c");
-            HttpPost request = new HttpPost(uri);
+//            URI uri = new URI(
+//                    "https://southcentralus.api.cognitive.microsoft.com/" +
+//                            "customvision/v1.1/Prediction/" +
+//                            "ed452434-110d-4c4d-9c84-51bad8820b04/" +
+//                            "image?iterationId=9f31ee2f-46b9-450a-b95d-419f4abb669c");
+            HttpPost request = new HttpPost("https://southcentralus.api.cognitive.microsoft.com" +
+                    "/customvision/v1.1/Prediction/ed452434-110d-4c4d-9c84-51bad8820b04/image");
             request.setHeader("Content-Type", "application/octet-stream");
-            request.setHeader("Prediction_Key", "b0df046c5d744954b4cb2690b3157fe9");
+            request.setHeader("Prediction-Key", "b0df046c5d744954b4cb2690b3157fe9");
+            // request.setHeader("Subscription-Key", "aa54bebcf55e4bf7a0d21ff16bd054cc");
 
             // Request body
             byte[] imgByte = bitmap2Bytes(imgBitmap);
+            Log.e("CustomAPI", "Get Bitmap");
 
             ByteArrayEntity bae = new ByteArrayEntity(imgByte);
+            Log.e("CustomAPI", "set Bitmap image");
             request.setEntity(bae);
 
             HttpResponse response = httpclient.execute(request);
+            Log.e("CustomAPI", "Excute request");
+
             HttpEntity entity = response.getEntity();
+            Log.e("CustomAPI", "Get Entity" + entity.toString());
 
             if (entity != null)
             {
                 String jsonString = EntityUtils.toString(entity).trim();
+                Log.e("CustomAPI", jsonString);
                 JSONObject responseObject = new JSONObject(jsonString);
                 JSONArray predictionsArray = responseObject.optJSONArray("Predictions");
                 for(int i = 0; i < predictionsArray.length(); i++) {
@@ -65,6 +74,7 @@ public class CustomVIsionAPI {
                         continue;
                     } else {
                         double prob = prediction.optDouble("Probability");
+                        Log.e("CustomAPI result", "" + prob);
                         if(prob >= 0.9) {
                             return true;
                         }
@@ -74,11 +84,13 @@ public class CustomVIsionAPI {
                     }
                 }
             } else {
+                Log.e("CustomAPI result", "API wrong!");
                 return false;
             }
         }
         catch (Exception e)
         {
+            Log.e("CustomAPI result", "API Exception");
             System.out.println(e.getMessage());
         }
         return false;

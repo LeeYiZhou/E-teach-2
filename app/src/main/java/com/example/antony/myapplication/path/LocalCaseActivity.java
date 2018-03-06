@@ -11,6 +11,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -23,12 +26,14 @@ import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.homepage.HomepageActivity;
 import com.example.antony.myapplication.homepage.PersonInfoActivity;
 import com.example.antony.myapplication.predict.OutcomeDisplayPredictActivity;
+import com.example.antony.myapplication.sign.MainActivity;
 import com.example.antony.myapplication.train.EditCaseActivity;
 import com.example.antony.myapplication.train.OutcomeDisplayTrainActivity;
 import com.example.antony.myapplication.util.CustomVIsionAPI;
 import com.example.antony.myapplication.util.FaceAPI;
 import com.example.antony.myapplication.util.PhotoUtils;
 import com.example.antony.myapplication.util.ScaleView;
+import com.example.antony.myapplication.util.UltimateBar;
 import com.mingle.widget.LoadingView;
 
 import java.io.File;
@@ -73,6 +78,9 @@ public class LocalCaseActivity extends BaseActivity implements LocalCaseView{
         album=(RelativeLayout)findViewById(R.id.album);
         loadingView=(LoadingView)findViewById(R.id.loadView);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     /**
@@ -114,6 +122,11 @@ public class LocalCaseActivity extends BaseActivity implements LocalCaseView{
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        if (bitmap == null) {
+                            Log.e("Bitmap", "Bitmap null！");
+                        } else {
+                            Log.e("Bitmap", "Bitmap Not null！");
+                        }
                         ActivityCollector.flag=CustomVIsionAPI.isImagePatient(bitmap);
                         runOnUiThread(new Runnable() {
                             @Override
@@ -173,6 +186,8 @@ public class LocalCaseActivity extends BaseActivity implements LocalCaseView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_local_case);
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(getResources().getColor(R.color.light_red));
         initViews();
         initOthers();
         initListener();
@@ -264,6 +279,20 @@ public class LocalCaseActivity extends BaseActivity implements LocalCaseView{
     }
 
     /*调用相册、相机上传图片*/
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(LocalCaseActivity.this, MainActivity.class);
+                startActivity(intent);
+                this.finish();
+                break;
+        }
+        return true;
+
+    }
+
 
 
 }

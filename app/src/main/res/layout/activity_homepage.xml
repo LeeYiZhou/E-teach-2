@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.antony.myapplication.sign.MainActivity"
     android:orientation="vertical"
-    android:paddingLeft="30dp">
+    android:paddingLeft="30dp"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,20 +15,21 @@
         android:text="我的主页"
         android:layout_marginTop="50dp"
         android:textColor="@color/dark_green"
-        android:textSize="20sp"/>
+        android:textSize="25sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Home Page"
         android:textColor="@color/dark_green"
-        android:textSize="16sp"/>
+        android:textSize="17sp"/>
 
     <ImageView
         android:id="@+id/imageview"
-        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="270dp"
         android:layout_marginRight="30dp"
         android:src="@mipmap/bg_homepage"/>
 
@@ -63,7 +65,7 @@
                 android:text="李 一 洲"
                 android:textColor="@color/dark_green"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:textSize="20sp"/>
 
             <TextView
@@ -72,9 +74,9 @@
                 android:layout_height="wrap_content"
                 android:text="主页君很懒，没留下任何足迹"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/dark_green"
-                android:textSize="15sp"/>
+                android:textSize="13sp"/>
 
         </LinearLayout>
 
@@ -83,7 +85,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="50dp">
 
         <LinearLayout
@@ -94,8 +96,8 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_settings"/>
 
             <TextView
@@ -116,8 +118,8 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@mipmap/ic_upload"/>
 
             <TextView

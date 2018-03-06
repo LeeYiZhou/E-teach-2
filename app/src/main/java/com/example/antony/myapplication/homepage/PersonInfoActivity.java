@@ -17,6 +17,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -32,9 +33,11 @@ import com.example.antony.myapplication.ActivityCollector;
 import com.example.antony.myapplication.BaseActivity;
 import com.example.antony.myapplication.R;
 import com.example.antony.myapplication.data.MyInfo;
+import com.example.antony.myapplication.path.LocalCaseActivity;
 import com.example.antony.myapplication.sign.MainActivity;
 import com.example.antony.myapplication.util.PhotoUtils;
 import com.example.antony.myapplication.util.PickerView;
+import com.example.antony.myapplication.util.UltimateBar;
 import com.mingle.widget.LoadingView;
 
 import java.io.File;
@@ -300,6 +303,8 @@ public class PersonInfoActivity extends BaseActivity implements PersonInfoView,V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_info);
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(getResources().getColor(R.color.light_red));
         initViews();
         initPopupwindow();
         initValues();
@@ -477,5 +482,7 @@ public class PersonInfoActivity extends BaseActivity implements PersonInfoView,V
         String state = Environment.getExternalStorageState();
         return state.equals(Environment.MEDIA_MOUNTED);
     }
+
+
 
 }
